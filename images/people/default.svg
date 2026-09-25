@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-labelledby="title desc">
+  <title id="title">Profile photo unavailable</title>
+  <desc id="desc">A neutral head-and-shoulders profile placeholder in UCLA blue.</desc>
+  <rect width="400" height="400" fill="#DAEBFE"/>
+  <circle cx="200" cy="139" r="76" fill="#003B5C"/>
+  <path d="M62 372c0-82 62-145 138-145s138 63 138 145H62Z" fill="#2774AE"/>
+</svg>

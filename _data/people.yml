@@ -174,7 +174,6 @@
   employment: University of Arizona
 - name: Yixin Jin
   klass: alPHD
-  image: default.jpg
   year: 2001
   thesis: "Distance Information Protocol (DIP) for Internet Distance Map Service (IDMaps)"
   employment: Akamai
@@ -356,12 +355,10 @@
   desc: Visiting Graduate Researcher (Harbin Institute of Technology)
   time: September 2017 - October 2018
 - name: Prof. Wang Yang
-  image: default.jpg
   klass: alVisitors
   desc: Visiting Scholar (Central South University, China)
   time: March 2015 - February 2016
 - name: Lijing Wang
-  image: default.jpg
   klass: alVisitors
   desc: Visiting Graduate Researcher (Tsinghua University)
   time: October 2014 - August 2015
@@ -377,7 +374,6 @@
   desc: Visiting Graduate Researcher (Tsinghua University)
   time: January 2014 - March 2014
 - name: Xiaojiang Chen
-  image: default.jpg
   klass: alVisitors
   desc: Visiting Scholar (Northwest University, China)
   time: January 2014 - March 2014
@@ -388,12 +384,10 @@
   time: April 2013 - April 2014
   link_to: https://www.linkedin.com/in/yu-zhang-63a6711a
 - name: Kun Yu
-  image: default.jpg
   klass: alVisitors
   desc: Visiting Graduate Researcher (Tsinghua University)
   time: January 2013 - June 2013
 - name: Chaoyi Bian
-  image: default.jpg
   klass: alVisitors
   desc: Visiting Graduate Researcher (Peking University)
   time: September 2011 - June 2012

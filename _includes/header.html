@@ -9,10 +9,10 @@
         </h1>
       </li>
       <li class='toggle-topbar menu-icon'>
-        <a href='#'>Menu</a>
+        <a href='#' aria-label='Toggle navigation' aria-controls='primary-navigation' aria-expanded='false'><span aria-hidden='true'></span></a>
       </li>
     </ul>
-    <section class='top-bar-section'>
+    <section class='top-bar-section' id='primary-navigation'>
       <ul class="right">
         {% for item in site.data.nav %}
           {% if item.section_id == page.section_id %}
@@ -34,7 +34,7 @@
             </li>
           {% else %}
             <li class="{{active_class}}">
-              <a href="{{ item.path | relative_url }}">{{ item.name }}</a>
+              <a href="{{ item.path | relative_url }}"{% if item.section_id == page.section_id %} aria-current="page"{% endif %}>{{ item.name }}</a>
             </li>
           {% endif %}
         {% endfor %}

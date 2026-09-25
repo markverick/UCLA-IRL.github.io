@@ -20,9 +20,7 @@ section_id: blog
         </span>
       </p>
       <h3><a href="{{ post.url | relative_url }}">{{post.title}}</a></h3>
-      <p>{{post.excerpt}}</p>
-      <div class='spacing'></div>
-      <a class="button small" href="{{ post.url | relative_url }}">Read more</a>
+      <div class="post-content">{{ post.content }}</div>
     </div>
   </div>
 {% endfor %}

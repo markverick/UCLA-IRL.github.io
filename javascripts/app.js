@@ -57,16 +57,56 @@ jQuery(document).foundation();
     //   $(this).addClass('appear');
     // });
 
-    $(window).scroll(function() {
+    var navUpdatePending = false;
+    var nav = $('.contain-to-grid.sticky').first();
+    var previousScroll = $(window).scrollTop();
+    var navIsCompact = previousScroll >= 48;
 
+    nav.toggleClass('is-compact', navIsCompact);
+
+    function desktopNavigationIsActive() {
+      return window.matchMedia('(min-width: 60em)').matches;
+    }
+
+    function updateNavigationState() {
       var scroll = $(window).scrollTop();
+      var isScrollingDown = scroll > previousScroll;
 
-      if ( scroll >= 40 ) {
-        $('body').addClass('shrink');
-      } else {
-        $('body').removeClass('shrink');
+      // Expand well before Foundation releases the fixed header at the top.
+      // Direction-aware thresholds keep the state stable when scrolling
+      // reverses near either boundary.
+      if (!desktopNavigationIsActive()) {
+        navIsCompact = false;
+        nav.removeClass('is-compact');
+      } else if (!navIsCompact && isScrollingDown && scroll >= 48) {
+        navIsCompact = true;
+        nav.addClass('is-compact');
+      } else if (navIsCompact && !isScrollingDown && scroll <= 120) {
+        navIsCompact = false;
+        nav.removeClass('is-compact');
       }
 
+      previousScroll = scroll;
+      navUpdatePending = false;
+    }
+
+    $(window).on('scroll', function() {
+      if (!navUpdatePending) {
+        navUpdatePending = true;
+        window.requestAnimationFrame(updateNavigationState);
+      }
+    });
+
+    updateNavigationState();
+
+    $('.toggle-topbar > a').on('click.navigationState', function() {
+      var toggle = $(this);
+
+      // Foundation handles the expansion; synchronize accessibility state
+      // after its delegated click handler has updated the top bar.
+      window.setTimeout(function() {
+        toggle.attr('aria-expanded', toggle.closest('.top-bar').hasClass('expanded') ? 'true' : 'false');
+      }, 0);
     });
 
     $('form#contact_form').validate({
@@ -520,6 +560,91 @@ jQuery(document).foundation();
     onBinding: function() {
       var $ctx = this.$ctx;
 
+      function updateOverflowingProfiles() {
+        $('.gallery > li', $ctx).each(function() {
+          var card = $(this);
+          var link = card.children('a');
+          var overlay = link.find('.overlay');
+          var info = link.find('.thumb-info');
+          var heading = info.children('h3');
+          var description = info.find('p').first().addClass('profile-description');
+
+          if (description.length && !description.parent().hasClass('profile-description-window')) {
+            description.wrap('<div class="profile-description-window"></div>');
+          }
+
+          var descriptionWindow = description.parent('.profile-description-window');
+          description.removeClass('is-overflowing is-marquee-active');
+          descriptionWindow.removeClass('is-overflowing').css('height', 'auto');
+          info.removeClass('has-overflowing-description');
+
+          var availableHeight = Math.max(overlay.innerHeight() - heading.outerHeight(true) - 40, 0);
+          var fadeInset = Math.min(28, availableHeight * 0.12);
+          var contentHeight = description.length ? description.outerHeight(true) + fadeInset : 0;
+          var readableHeight = Math.max(availableHeight - (fadeInset * 2), 0);
+          var shouldMarquee = contentHeight > readableHeight;
+          var overflowDistance = shouldMarquee
+            ? Math.max(contentHeight - (availableHeight - fadeInset), fadeInset)
+            : 0;
+
+          description.toggleClass('is-overflowing', shouldMarquee);
+          descriptionWindow.toggleClass('is-overflowing', shouldMarquee);
+          descriptionWindow.css('height', shouldMarquee ? availableHeight + 'px' : 'auto');
+          info.toggleClass('has-overflowing-description', shouldMarquee);
+
+          if (description.length) {
+            description[0].style.setProperty('--marquee-inset', fadeInset + 'px');
+            description[0].style.setProperty('--marquee-distance', overflowDistance + 'px');
+            description[0].style.setProperty('--marquee-duration', Math.max(8, overflowDistance / 10) + 's');
+          }
+        });
+      }
+
+      $ctx.imagesLoaded(function() {
+        updateOverflowingProfiles();
+      });
+
+      $('.gallery > li > a', $ctx)
+        .on('mouseenter focusin', function() {
+          var info = $(this).find('.profile-description.is-overflowing');
+
+          if (info.length) {
+            info.removeClass('is-marquee-active');
+            info[0].offsetHeight;
+            info.addClass('is-marquee-active');
+          }
+        })
+        .on('mouseleave focusout', function() {
+          $(this).find('.profile-description').removeClass('is-marquee-active');
+        });
+
+      $('.gallery > li > a', $ctx).on('click.peopleTouch', function(event) {
+        var usesTouchNavigation = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+        var card = $(this).parent('li');
+
+        if (!usesTouchNavigation || card.hasClass('touch-open')) {
+          return;
+        }
+
+        event.preventDefault();
+        card.siblings('.touch-open').removeClass('touch-open')
+          .find('.profile-description').removeClass('is-marquee-active');
+        card.addClass('touch-open');
+
+        var description = card.find('.profile-description.is-overflowing');
+        if (description.length) {
+          description.removeClass('is-marquee-active');
+          description[0].offsetHeight;
+          description.addClass('is-marquee-active');
+        }
+      });
+
+      var overflowResizeTimer;
+      $(window).on('resize.peopleGallery', function() {
+        clearTimeout(overflowResizeTimer);
+        overflowResizeTimer = setTimeout(updateOverflowingProfiles, 120);
+      });
+
       // $('img', $ctx).each(function() {
       //   $(this).css({
       //     'height': $(this).attr('height'),
@@ -553,15 +678,17 @@ jQuery(document).foundation();
       //   });
       // }
 
-      $('.gallery-nav ul li a', $ctx).click(function() {
+      $('.gallery-nav [data-cat]', $ctx).click(function() {
         var module = $(this).closest('.modGallery');
         var navigation = module.children('.gallery-nav');
         var gallery = module.children('ul.gallery');
 
         navigation.find('li').removeClass('current');
-        $(this).closest('li').addClass('current');
+        navigation.find('[data-cat]').attr('aria-pressed', 'false');
+        $(this).attr('aria-pressed', 'true').closest('li').addClass('current');
 
         var cat = $(this).attr('data-cat');
+        navigation.find('.gallery-filter-select').val(cat);
 
         var items = gallery.children('li');
         var previousTimer = gallery.data('filter-timer');
@@ -631,6 +758,15 @@ jQuery(document).foundation();
 
         return false;
 
+      });
+
+      $('.gallery-filter-select', $ctx).on('change', function() {
+        var navigation = $(this).closest('.gallery-nav');
+        var category = this.value;
+
+        navigation.find('[data-cat]').filter(function() {
+          return $(this).attr('data-cat') === category;
+        }).first().trigger('click');
       });
 
     }

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: People
-section_id: portfolio
+section_id: people
 categories:
   - internal: prof
     category: Professors
@@ -56,15 +56,39 @@ alumni_categories:
 <div class='full people-section'>
   <div class='row'>
     <div class='mod modGallery'>
-      <div class='gallery-nav'>
+      <div class='gallery-nav' aria-label='Filter current members by role'>
+        <select class='gallery-filter-select' aria-label='Filter current members by role'>
+          <option value='all'>All roles</option>
+          {% for category in page.categories %}
+            {% assign category_has_people = false %}
+            {% for person in site.data.people %}
+              {% if person.klass == category.internal %}
+                {% assign category_has_people = true %}
+                {% break %}
+              {% endif %}
+            {% endfor %}
+            {% if category_has_people %}
+              <option value='{{ category.internal }}'>{{ category.category }}</option>
+            {% endif %}
+          {% endfor %}
+        </select>
         <ul>
           <li class='current'>
-            <a data-cat='all' href='#'>All</a>
+            <button data-cat='all' type='button' aria-pressed='true'>All</button>
           </li>
           {% for category in page.categories %}
-            <li>
-              <a data-cat='{{ category.internal }}' href='#'>{{ category.category }}</a>
-            </li>
+            {% assign category_has_people = false %}
+            {% for person in site.data.people %}
+              {% if person.klass == category.internal %}
+                {% assign category_has_people = true %}
+                {% break %}
+              {% endif %}
+            {% endfor %}
+            {% if category_has_people %}
+              <li>
+                <button data-cat='{{ category.internal }}' type='button' aria-pressed='false'>{{ category.category }}</button>
+              </li>
+            {% endif %}
           {% endfor %}
         </ul>
       </div>
@@ -83,7 +107,7 @@ alumni_categories:
               {% if person.image %}
                 <img alt="" src="{{ '/images/groupPics/' | append: person.image | relative_url }}" />
               {% else %}
-                <img alt="" src="{{ '/images/@stock/work-7.jpg' | relative_url }}" />
+                <img class="profile-placeholder" alt="Profile photo unavailable" src="{{ '/images/people/default.svg' | relative_url }}" />
               {% endif %}
                 <div class='overlay'>
                   <div class='thumb-info'>
@@ -114,15 +138,39 @@ alumni_categories:
 <div class='full people-section'>
   <div class='row'>
     <div class='mod modGallery'>
-      <div class='gallery-nav'>
+      <div class='gallery-nav' aria-label='Filter alumni by role'>
+        <select class='gallery-filter-select' aria-label='Filter alumni by role'>
+          <option value='all'>All alumni</option>
+          {% for category in page.alumni_categories %}
+            {% assign category_has_people = false %}
+            {% for person in site.data.people %}
+              {% if person.klass == category.internal %}
+                {% assign category_has_people = true %}
+                {% break %}
+              {% endif %}
+            {% endfor %}
+            {% if category_has_people %}
+              <option value='{{ category.internal }}'>{{ category.category }}</option>
+            {% endif %}
+          {% endfor %}
+        </select>
         <ul>
           <li class='current'>
-            <a data-cat='all' href='#'>All</a>
+            <button data-cat='all' type='button' aria-pressed='true'>All</button>
           </li>
           {% for category in page.alumni_categories %}
-            <li>
-              <a data-cat='{{ category.internal }}' href='#'>{{ category.category }}</a>
-            </li>
+            {% assign category_has_people = false %}
+            {% for person in site.data.people %}
+              {% if person.klass == category.internal %}
+                {% assign category_has_people = true %}
+                {% break %}
+              {% endif %}
+            {% endfor %}
+            {% if category_has_people %}
+              <li>
+                <button data-cat='{{ category.internal }}' type='button' aria-pressed='false'>{{ category.category }}</button>
+              </li>
+            {% endif %}
           {% endfor %}
         </ul>
       </div>
@@ -142,7 +190,7 @@ alumni_categories:
                 {% assign person_image_dir = person.image_dir | default: 'alumniPics' %}
                 <img alt="" src="{{ '/images/' | append: person_image_dir | append: '/' | append: person.image | relative_url }}" />
               {% else %}
-                <img alt="" src="{{ '/images/@stock/work-7.jpg' | relative_url }}" />
+                <img class="profile-placeholder" alt="Profile photo unavailable" src="{{ '/images/people/default.svg' | relative_url }}" />
               {% endif %}
                 <div class='overlay'>
                   <div class='thumb-info'>

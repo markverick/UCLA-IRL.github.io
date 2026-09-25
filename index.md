@@ -93,7 +93,7 @@ works:
 
 
 
-<div class='full parallax page-hero' style='background-image: url(images/banner/banner.jpg);'>
+<div class='full parallax page-hero home-hero' style='background-image: url(images/banner/banner.jpg);'>
   <div class='row'>
     <div class='large-12 columns'>
       {% include section-header.html title="Internet Research Laboratory" tagline="University of California, Los Angeles (UCLA)" class="big" %}
@@ -102,19 +102,19 @@ works:
 </div>
 
 <div class='row intro-section'>
+  <div class='large-12 columns'>
+    <h2>
+      Welcome
+    </h2>
 
-  <h2>
-    Welcome
-  </h2>
+    <p class="lead">
+      Welcome to the Internet Research Laboratory (IRL), part of the <a href="https://cs.ucla.edu" target="_blank">Computer Science</a> department at the <a href="https://ucla.edu" target="_blank">University of California, Los Angeles (UCLA)</a>. The IRL's research primarily focuses on <a href="https://named-data.net" target="_blank">Named Data Networking</a>. Previously, our research covered fault tolerance in large scale distributed systems, Internet routing infrastructure, inter-domain routing, and protocol design principles for large-scale, self-organizing systems. Our group has produced numerous <a href="publications.html">publications</a> over the years.
+    </p>
 
-<p class="lead">
-  Welcome to the Internet Research Laboratory (IRL), part of the <a href="https://cs.ucla.edu" target="_blank">Computer Science</a> department at the <a href="https://ucla.edu" target="_blank">University of California, Los Angeles (UCLA)</a>. The IRL's research primarily focuses on <a href="https://named-data.net" target="_blank">Named Data Networking</a>. Previously, our research covered fault tolerance in large scale distributed systems, Internet routing infrastructure, inter-domain routing, and protocol design principles for large-scale, self-organizing systems. Our group has produced numerous <a href="publications.html">publications</a> over the years.
-</p>
-
-<p class="lead">
-  The Internet Research Laboratory is headed by <a href="http://www.cs.ucla.edu/~lixia/" target="_blank">Prof. Lixia Zhang</a>.
-</p>
-
+    <p class="lead">
+      The Internet Research Laboratory is headed by <a href="http://www.cs.ucla.edu/~lixia/" target="_blank">Prof. Lixia Zhang</a>.
+    </p>
+  </div>
 </div>
 
 
