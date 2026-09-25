@@ -4,10 +4,10 @@ title: RFCs
 section_id: rfc
 ---
 
-<div class="full parallax" style="background-image: url(images/banner/banner.jpg); color: #000000;">
+<div class="full parallax" style="background-image: url(images/banner/banner.jpg); color: var(--color-text);">
   <div class="row">
     <div class="large-12 columns">
-      {% include section-header.html title="RFC" tagline="" color="#000000" class="big" %}
+      {% include section-header.html title="RFC" tagline="" class="big" %}
     </div>
   </div>
   <div class="four spacing"></div>

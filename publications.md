@@ -4,10 +4,10 @@ title: Publications
 section_id: publications
 ---
 
-<div class="full parallax" style="background-image: url(images/banner/banner.jpg); color: #fff;">
+<div class="full parallax" style="background-image: url(images/banner/banner.jpg); color: var(--color-text-on-dark);">
   <div class="row">
     <div class="large-12 columns">
-      {% include section-header.html title="Publications" tagline="" color="#000000" class="big" %}
+      {% include section-header.html title="Publications" tagline="" class="big" %}
     </div>
   </div>
   <div class="four spacing"></div>

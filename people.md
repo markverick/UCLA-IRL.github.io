@@ -43,10 +43,10 @@ alumni_categories:
 ---
 
 
-<div class='full parallax' style='background-image: url(images/banner/banner.jpg); color: #fff;'>
+<div class='full parallax' style='background-image: url(images/banner/banner.jpg); color: var(--color-text-on-dark);'>
   <div class='row'>
     <div class='large-12 columns'>
-      {% include section-header.html title="The team" tagline="Current members and alumni of the IRL" color="#000000" class="big" %}
+      {% include section-header.html title="The team" tagline="Current members and alumni of the IRL" class="big" %}
     </div>
   </div>
   <div class='four spacing'></div>

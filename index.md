@@ -93,10 +93,10 @@ works:
 
 
 
-<div class='full parallax' style='background-image: url(images/banner/banner.jpg); color: #fff;'>
+<div class='full parallax' style='background-image: url(images/banner/banner.jpg); color: var(--color-text-on-dark);'>
   <div class='row'>
     <div class='large-12 columns'>
-      {% include section-header.html title="Internet Research Laboratory" tagline="University of California, Los Angeles (UCLA)" color="#000000" class="big" %}
+      {% include section-header.html title="Internet Research Laboratory" tagline="University of California, Los Angeles (UCLA)" class="big" %}
     </div>
   </div>
   <div class='four spacing'></div>
@@ -127,7 +127,7 @@ works:
 
 </div>
 
-<div class="full" style="background: #f5f5f5;">
+<div class="full" style="background: var(--color-surface-subtle);">
   <div class="row">
     <div class="large-12 columns">
       {% include section-header.html title="Our works" %}
@@ -161,7 +161,7 @@ works:
 -->
 
 
-<div class='full' style='background: #f5f5f5'>
+<div class='full' style='background: var(--color-surface-subtle)'>
   <div class='row'>
     <div class='large-12 columns'>
       {% include section-header.html title="Our recent projects" %}
@@ -208,7 +208,7 @@ works:
 
   </div>
 
-<div class='full' style='background: #f5f5f5'>
+<div class='full' style='background: var(--color-surface-subtle)'>
   <div class='row'>
     <div class='large-12 columns'>
       {% include section-header.html title="Our recent posts" %}

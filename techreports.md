@@ -4,10 +4,10 @@ title: Technical Reports
 section_id: techreports
 ---
 
-<div class="full parallax" style="background-image: url(images/banner/banner.jpg); color: #fff;">
+<div class="full parallax" style="background-image: url(images/banner/banner.jpg); color: var(--color-text-on-dark);">
   <div class="row">
     <div class="large-12 columns">
-      {% include section-header.html title="Technical Reports" tagline="" color="#000000" class="big" %}
+      {% include section-header.html title="Technical Reports" tagline="" class="big" %}
     </div>
   </div>
   <div class="four spacing"></div>
