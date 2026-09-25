@@ -26,7 +26,7 @@
     },
     {
       "name":"Hydra",
-      "url":"https://hydra-repo.io/",
+      "url":"https://ndn-hydra.readthedocs.io/",
       "abs":"A secure, decentralized storage federation for scalable, resilient publication and access of large scientific datasets."
     },
     {
