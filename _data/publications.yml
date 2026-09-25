@@ -924,7 +924,7 @@ Varun Patil, Alex Afanasyev, F. Alex Feltus, Lixia Zhang, Susmit Shannigrahi"
   conference: "ACM Conference on Information-Centric Networking (ACM ICN)"
   month: September
   year: 2017
-  pdf: ndn-delorean-17.pdf
+  pdf: icn-delorean-17.pdf
 
 - title: "Opportunities and Challenges for Named Data Networking to Increase the Agility of Military Coalitions"
   authors: "Christopher Gibson, Pablo Bermell-Garcia, Kevin Chan, Bongjun Ko, Alex Afanasyev, Lixia Zhang"
@@ -1084,7 +1084,7 @@ Varun Patil, Alex Afanasyev, F. Alex Feltus, Lixia Zhang, Susmit Shannigrahi"
   conference: "ACM Conference on Information-Cetric Networking (ACM ICN)"
   month: September
   year: 2016
-  pdf: zhang2016mhealth.pdf
+  pdfext: https://doi.org/10.1145/2984356.2984379
 
 - title: "Hop-By-Hop Best Effort Link Layer Reliability in Named Data Networking"
   authors: "Satyanarayana Vusirikala, Spyridon Mastorakis, Alexander Afanasyev, Lixia Zhang"
@@ -1848,7 +1848,7 @@ Varun Patil, Alex Afanasyev, F. Alex Feltus, Lixia Zhang, Susmit Shannigrahi"
   conference: "Asian Internet Engineering Conference (AINTEC)"
   month: November
   year: 2010
-  pdf: rfdrg_aintec.pdf
+  pdfext: https://doi.org/10.1145/1930286.1930290
 
 - title: "Named Data Networking (NDN) Project"
   authors: "Lixia Zhang, Deborah Estrin, Jeffrey Burke, Van Jacobson, James D. Thornton, Diana K. Smetters, Beichuan Zhang, Gene Tsudik, kc claffy, Dmitri Krioukov, Dan Massey, Christos Papadopoulos, Tarek Abdelzaher, Lan Wang, Patrick Crowley, Edmund Yeh"
@@ -1999,7 +1999,7 @@ Varun Patil, Alex Afanasyev, F. Alex Feltus, Lixia Zhang, Susmit Shannigrahi"
   pages: "109-122"
   month: February
   year: 2010
-  pdf: 0completeness.pdf
+  pdfext: https://doi.org/10.1109/TNET.2009.2020798
 
 - title: "Towards a systematic understanding of route reflection"
   authors: "Jong Han Park, Ricardo Oliveira, Shane Amante, Danny McPherson, Lixia Zhang"
@@ -2399,7 +2399,7 @@ Varun Patil, Alex Afanasyev, F. Alex Feltus, Lixia Zhang, Susmit Shannigrahi"
   pages: "1450-1460"
   month: November
   year: 2006
-  pdf: lad2006visualizing.pdf
+  pdfext: https://doi.org/10.1109/TVCG.2006.108
 
 - title: "Visualization for Security: End of the road or a new beginning?"
   authors: "Josh Hyman, Mohit Lad, Lixia Zhang"
@@ -2545,7 +2545,7 @@ Varun Patil, Alex Afanasyev, F. Alex Feltus, Lixia Zhang, Susmit Shannigrahi"
   conference: "ACM SIGCOMM Mining the Network Data (MineNet) Workshop"
   month: August
   year: 2005
-  pdf: zhang2005transfers.pf
+  pdf: zhang2005transfers.pdf
 
 - title: "Making the world (of communications) a different place"
   authors: "David D. Clark, Craig Partridge, Robert T. Braden, Bruce Davie, Sally Floyd, Van Jacobson, Dina Katabi, Greg Minshall, K. K. Ramakrishnan, Timothy Roscoe, Ion Stoica, John Wroclawski, Lixia Zhang"
@@ -2688,7 +2688,7 @@ Varun Patil, Alex Afanasyev, F. Alex Feltus, Lixia Zhang, Susmit Shannigrahi"
   conference: "IEEE Global Telecommunications Conference (GLOBECOM)"
   month: November
   year: 2004
-  pdf: zhang2004reachability.pdf
+  pdfext: https://doi.org/10.1109/GLOCOM.2004.1378211
 
 - title: "Finite State Machines for BGP"
   authors: "Dan Pei, Dan Massey, Lixia Zhang"

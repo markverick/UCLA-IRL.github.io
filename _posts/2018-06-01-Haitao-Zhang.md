@@ -8,6 +8,5 @@ categories: jekyll update
 
 
 [name]:					https://irl.cs.ucla.edu/~haitao/
-[thesis]:				https://irl.cs.ucla.edu/theses.html
-
+[thesis]:				{{ "/theses.html" | relative_url }}
 
