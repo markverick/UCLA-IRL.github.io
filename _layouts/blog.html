@@ -3,17 +3,16 @@ layout: default
 ---
 
 
-<div class='full parallax' style='background-image: url({{site.url}}/images/banner/banner.jpg); color: var(--color-text-on-dark);'>
+<div class='full parallax page-hero' style='background-image: url({{ "/images/banner/banner.jpg" | relative_url }});'>
   <div class='row'>
     <div class='large-12 columns'>
       {% include section-header.html title="The IRL Blog" tagline="See the latest blog posts from members of the IRL group" class="big" %}
     </div>
   </div>
-  <div class='four spacing'></div>
 </div>
 
 
-<div class='full' style='background: var(--color-surface-subtle)'>
+<div class='full content-section'>
   <div class='row'>
     <div class='large-9 columns'>
 
@@ -35,18 +34,20 @@ layout: default
         <div class="pager">
           {% if paginator.next_page %}
             {% if paginator.next_page == 1 %}
-              <a href="/blog" class="older">Older Entries</a>
+              <a href="{{ '/blog' | relative_url }}" class="older">Older Entries</a>
             {% else %}
-              <a href="/blog/page{{ paginator.next_page }}" class="older">Older Entries</a>
+              {% capture older_page_path %}/blog/page{{ paginator.next_page }}{% endcapture %}
+              <a href="{{ older_page_path | relative_url }}" class="older">Older Entries</a>
             {% endif %}
           {% else %}
             <span class="older">Older Entries</span>
           {% endif %}
           {% if paginator.previous_page %}
             {% if paginator.previous_page == 1 %}
-              <a href="/blog" class="newer">Newer Entries</a>
+              <a href="{{ '/blog' | relative_url }}" class="newer">Newer Entries</a>
             {% else %}
-              <a href="/blog/page{{ paginator.previous_page }}" class="newer">Newer Entries</a>
+              {% capture newer_page_path %}/blog/page{{ paginator.previous_page }}{% endcapture %}
+              <a href="{{ newer_page_path | relative_url }}" class="newer">Newer Entries</a>
             {% endif %}
           {% else %}
             <span class="newer">Newer Entries</span>
@@ -54,12 +55,9 @@ layout: default
         </div>
       {% endif %}
 
-
-      <div class='four spacing'></div>
     </div>
     <div class='large-3 columns' id='sidebar'>
       {% include sidebar.html %}
-      <div class='four spacing'></div>
     </div>
   </div>
 </div>

@@ -9,7 +9,7 @@ section_id: blog
     <div class='mod modBlogPost big'>
       <div class='images'>
         {% for image in page.images %}
-          <div class='image'><img alt="" src="{{site.url}}/{{image}}" /></div>
+          <div class='image'><img alt="" src="{{ image | relative_url }}" /></div>
         {% endfor %}
       </div>
       <div class='content'>
@@ -21,7 +21,7 @@ section_id: blog
           </span>
           
         </p>
-        <h3><a href="{{page.url}}">{{page.title}}</a></h3>
+        <h3><a href="{{ page.url | relative_url }}">{{page.title}}</a></h3>
         {{ content }}
       </div>
     </div>

@@ -554,25 +554,80 @@ jQuery(document).foundation();
       // }
 
       $('.gallery-nav ul li a', $ctx).click(function() {
+        var module = $(this).closest('.modGallery');
+        var navigation = module.children('.gallery-nav');
+        var gallery = module.children('ul.gallery');
 
-        $('.gallery-nav ul li').removeClass('current');
+        navigation.find('li').removeClass('current');
         $(this).closest('li').addClass('current');
 
         var cat = $(this).attr('data-cat');
 
-        var gallery = $('.gallery-nav').closest('.modGallery').find('ul.gallery');
+        var items = gallery.children('li');
+        var previousTimer = gallery.data('filter-timer');
 
-        if (cat === 'all') {
-          $('li', gallery).removeClass('hidden');
-        } else {
-          $('li', gallery).each(function() {
-            if ($(this).hasClass(cat)) {
-              $(this).removeClass('hidden');
-            } else {
-              $(this).addClass('hidden');
-            }
-          });
+        if (previousTimer) {
+          clearTimeout(previousTimer);
         }
+
+        items.css({ transition: '', transform: '', opacity: '' })
+          .removeClass('is-filtering is-entering')
+          .removeData('filter-position');
+
+        items.not('.hidden').each(function() {
+          $(this).data('filter-position', {
+            left: this.offsetLeft,
+            top: this.offsetTop
+          });
+        });
+
+        items.addClass('is-filtering');
+
+        var filterTimer = setTimeout(function() {
+          items.each(function() {
+            var item = $(this);
+            var shouldShow = cat === 'all' || item.hasClass(cat);
+            item.toggleClass('hidden', !shouldShow);
+          });
+
+          var visibleItems = items.not('.hidden');
+          items.removeClass('is-filtering');
+
+          visibleItems.each(function() {
+            var previous = $(this).data('filter-position');
+            var keyframes;
+
+            if (previous) {
+              var deltaX = previous.left - this.offsetLeft;
+              var deltaY = previous.top - this.offsetTop;
+
+              keyframes = [
+                { transform: 'translate(' + deltaX + 'px, ' + deltaY + 'px)', opacity: 1 },
+                { transform: 'translate(0, 0)', opacity: 1 }
+              ];
+            } else {
+              keyframes = [
+                { transform: 'scale(0.94)', opacity: 0 },
+                { transform: 'scale(1)', opacity: 1 }
+              ];
+            }
+
+            if (this.animate) {
+              this.animate(keyframes, {
+                delay: previous ? 0 : 70,
+                duration: previous ? 460 : 320,
+                easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
+                fill: 'backwards'
+              });
+            }
+
+            $(this).removeData('filter-position');
+          });
+
+          gallery.removeData('filter-timer');
+        }, 160);
+
+        gallery.data('filter-timer', filterTimer);
 
         return false;
 
@@ -814,5 +869,3 @@ var BibTexHash = new Hash(); function changeBibtexType(c, a) {
         }
     }).send()
 }
-
-

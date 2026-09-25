@@ -4,24 +4,22 @@ title: Theses
 section_id: theses
 ---
 
-<div class="full parallax" style="background-image: url(images/banner/banner.jpg); color: var(--color-text-on-dark);">
+<div class="full parallax page-hero" style="background-image: url(images/banner/banner.jpg);">
   <div class="row">
     <div class="large-12 columns">
       {% include section-header.html title="Theses" tagline="" class="big" %}
     </div>
   </div>
-  <div class="four spacing"></div>
 </div>
 
-<div class="row" style="margin-top: 20px;">
+<div class="row notice-panel">
   <h2>COPYRIGHT NOTICE</h2>
 
   <p>The documents here are provided as a means to ensure timely dissemination of technical work on a noncommercial basis. Copyright and all rights therein are maintained by the authors or by other copyright holders. It is understood that anyone copying the papers from this page will adhere to the terms and constraints invoked by the copyright.</p>
 
-  <hr />
 </div>
 
-<div class="row">
+<div class="row document-list">
 
 Over the years, the IRL has produced many accomplished Ph.D. graduates.
 All dissertations from IRL Ph.D. graduates are listed herein, with dissertation defense slides also linked when available.<br />

@@ -4,16 +4,15 @@ title: Publications
 section_id: publications
 ---
 
-<div class="full parallax" style="background-image: url(images/banner/banner.jpg); color: var(--color-text-on-dark);">
+<div class="full parallax page-hero" style="background-image: url(images/banner/banner.jpg);">
   <div class="row">
     <div class="large-12 columns">
       {% include section-header.html title="Publications" tagline="" class="big" %}
     </div>
   </div>
-  <div class="four spacing"></div>
 </div>
 
-<div class="row" style="margin-top: 20px;">
+<div class="row notice-panel">
     <h2>COPYRIGHT NOTICE</h2>
 
     <p>
@@ -21,7 +20,7 @@ section_id: publications
     </p>
 </div>
 
-<div class="row">
+<div class="row document-list">
 
 {% assign current_year = site.time | date: "%Y" %}
 {% assign months = "unknown,January,February,March,April,May,June,July,August,September,October,November,December" | split: "," %}

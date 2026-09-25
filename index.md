@@ -93,29 +93,25 @@ works:
 
 
 
-<div class='full parallax' style='background-image: url(images/banner/banner.jpg); color: var(--color-text-on-dark);'>
+<div class='full parallax page-hero' style='background-image: url(images/banner/banner.jpg);'>
   <div class='row'>
     <div class='large-12 columns'>
       {% include section-header.html title="Internet Research Laboratory" tagline="University of California, Los Angeles (UCLA)" class="big" %}
     </div>
   </div>
-  <div class='four spacing'></div>
-</div>
-<div class="spacing">
-
 </div>
 
-<div class = 'row'>
+<div class='row intro-section'>
 
   <h2>
     Welcome
   </h2>
 
-<p style="font-size: 20px">
-  Welcome to the Internet Research Laboratory (IRL), part of the <a href="https://cs.ucla.edu" target="_blank">Computer Science</a> department at the <a href="https://ucla.edu" target="_blank">University of California, Los Angeles (UCLA)</a>. The IRL's research primarily focuses on <a href="https://named-data.net" target="_blank">Named Data Networking</a>. Previously, our research covered fault tolerance in large scale distributed systems, Internet routing infrastructure, inter-domain routing (namely, BGP), and protocol design principles for large-scale, self-organizing systems. Our group has produced numerous <a href="publications.html">publications</a> over the years.
+<p class="lead">
+  Welcome to the Internet Research Laboratory (IRL), part of the <a href="https://cs.ucla.edu" target="_blank">Computer Science</a> department at the <a href="https://ucla.edu" target="_blank">University of California, Los Angeles (UCLA)</a>. The IRL's research primarily focuses on <a href="https://named-data.net" target="_blank">Named Data Networking</a>. Previously, our research covered fault tolerance in large scale distributed systems, Internet routing infrastructure, inter-domain routing, and protocol design principles for large-scale, self-organizing systems. Our group has produced numerous <a href="publications.html">publications</a> over the years.
 </p>
 
-<p style="font-size: 20px">
+<p class="lead">
   The Internet Research Laboratory is headed by <a href="http://www.cs.ucla.edu/~lixia/" target="_blank">Prof. Lixia Zhang</a>.
 </p>
 
@@ -161,19 +157,13 @@ works:
 -->
 
 
-<div class='full' style='background: var(--color-surface-subtle)'>
+<div class='full section-heading projects-section'>
   <div class='row'>
     <div class='large-12 columns'>
       {% include section-header.html title="Our recent projects" %}
-      <div class='spacing'></div>
-      <p>
-      </p>
-      <div class='two spacing'></div>
     </div>
   </div>
-</div>
-
-<div class='row'>
+<div class='row cards-grid project-grid'>
   {% for project in site.data.projects %}
       <div class='large-4 medium-4 columns{% if forloop.last %} end{% endif %}'>
         <div class='mod modBlogPost'>
@@ -195,28 +185,18 @@ works:
         </div>
       </div>
 
-    {% assign project_row_position = forloop.index | modulo: 3 %}
-    {% if project_row_position == 0 %}
-      {% unless forloop.last %}
-  </div>
-
-  <div class='row'>
-      {% endunless %}
-    {% endif %}
-
     {% endfor %}
 
   </div>
+</div>
 
-<div class='full' style='background: var(--color-surface-subtle)'>
+<div class='full content-section posts-section'>
   <div class='row'>
     <div class='large-12 columns'>
       {% include section-header.html title="Our recent posts" %}
-      <div class='spacing'></div>
       <p>
         Here are the most recent blog posts from the members of the IRL team.
       </p>
-      <div class='two spacing'></div>
     </div>
   </div>
 
@@ -232,12 +212,13 @@ works:
             {% unless forloop.first %}
               {% break %}
             {% endunless %}
-            <a href="{{post.url}}"><img alt="" src="{{image}}" /></a>
+            <a href="{{ post.url | relative_url }}"><img alt="" src="{{ image | relative_url }}" /></a>
           {% endfor %}
           <div class='content'>
             <p class='date'>{{post.date | date: "%B %d, %Y" }}</p>
-            <h4><a href="{{post.url}}">{{post.title}}</a></h4>
-            <p>{{post.excerpt}}</p>
+            <h4><a href="{{ post.url | relative_url }}">{{post.title}}</a></h4>
+            <p class="post-summary">{{ post.excerpt | strip_html | strip_newlines | truncatewords: 28 }}</p>
+            <a class="read-more" href="{{ post.url | relative_url }}" aria-label="Read more about {{ post.title | escape }}">Read more <span aria-hidden="true">&rarr;</span></a>
             <!--
               <div class="tags">
                 {% for cat in post.categories %}
@@ -257,14 +238,11 @@ works:
   </div>
 
 
-  <div class='two spacing'></div>
   <div class='row'>
     <div class='large-12 columns'>
       <p class='centered-text'>
-        <a class='button' href='blog'>See more posts</a>
+        <a class='button' href='{{ "/blog" | relative_url }}'>See more posts</a>
       </p>
     </div>
   </div>
-  <div class='two spacing'></div>
-
 </div>

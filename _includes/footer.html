@@ -1,52 +1,41 @@
 <div id='footer'>
-  <div class='three spacing'></div>
   <div class='row'>
     <div class='large-3 medium-3 columns'>
       <h1>
-        <a href='/index.html'>
-          <img alt="" src="{{site.url}}/images/logo-grey.png" />
+        <a href='{{ "/index.html" | relative_url }}'>
+          <img alt="" src="{{ "/images/logo-grey.png" | relative_url }}" />
         </a>
       </h1>
       <p>© Copyright UCLA Internet Research Laboratory</p>
-      <div class='spacing'></div>
-      <div class='spacing'></div>
     </div>
     <div class='large-3 medium-3 columns'>
-      <div class='spacing'></div>
       <div class='links'>
         <h4>Links</h4>
         <ul>
-          <li><a href="/index.html">Home</a></li>
-          <li><a href="/blog">Follow our IRL blog</a></li>
+          <li><a href="{{ "/index.html" | relative_url }}">Home</a></li>
+          <li><a href="{{ "/blog" | relative_url }}">Follow our IRL blog</a></li>
           <li><a href="https://zjkmxy.github.io/year-archive/">Xinyu Ma's Blog</a></li>
         </ul>
       </div>
-      <div class='spacing'></div>
     </div>
     <div class='large-3 medium-3 columns'>
-      <div class='spacing'></div>
       <div class='links'>
         <h4>Recent posts</h4>
         <ul>
-          {% for post in site.posts %}
-            <li><a href="{{post.url}}">{{post.title}}</a></li>
+          {% for post in site.posts limit:3 %}
+            <li><a href="{{ post.url | relative_url }}" title="{{ post.title | escape }}">{{ post.title | truncatewords: 7 }}</a></li>
           {% endfor %}
         </ul>
+        <a class="footer-read-more" href="{{ "/blog" | relative_url }}">View all posts <span aria-hidden="true">&rarr;</span></a>
       </div>
-      <div class='spacing'></div>
     </div>
     <div class='large-3 medium-3 columns'>
-      <div class='spacing'></div>
       <h4>Contact us</h4>
       <ul>
         <li>Location: Engineering VI, UCLA</li>
       </ul>
-      <div class='spacing'></div>
-
-      <div class='spacing'></div>
     </div>
   </div>
-  <div class='two spacing'></div>
 </div>
 <script src="{{ "/javascripts/jquery.countTo.js" | prepend: site.baseurl }}" type="text/javascript"></script>
 <script src="{{ "/javascripts/jquery.appear.js" | prepend: site.baseurl }}" type="text/javascript"></script>

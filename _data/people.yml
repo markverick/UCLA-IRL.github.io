@@ -11,7 +11,7 @@
 - name: Sirapop (Mark) Theeranantachai
   image: sirapop.jpg
   link_to: https://www.linkedin.com/mwlite/in/stheera
-  klass: phd-candidate
+  klass: phd-student
 - name: Adam Thieme
   image: adam_thieme_2.jpg
   link_to: https://web.cs.ucla.edu/~adam
@@ -203,7 +203,8 @@
 - name: Mike Han
   image: mike_han.jpg
   klass: alMasters
-  status: Meta
+  year: 2026
+  status: Amazon
 - name: Yekta Kocaoğullar
   image: yekta_kocaogullar.jpg
   image_dir: groupPics
