@@ -11,6 +11,28 @@
 #   pres_pdf:                  # (if any) location of presentation relative to /data/files/theses in PDF format
 #   pres_ppt:                  # (if any) location of presentation relative to /data/files/theses in PPT format
 
+# 2025
+
+- title: "Developing a Trust Plane for Interconnected Networks"
+  author: "Tianyuan Yu"
+  month: unknown
+  year: 2025
+  pdfext: https://escholarship.org/uc/item/4qs571dz
+
+- title: "Enabling Decentralized Applications: A Transport Perspective"
+  author: "Varun Patil"
+  month: unknown
+  year: 2025
+  pdfext: https://escholarship.org/uc/item/03r09055
+
+# 2024
+
+- title: "Towards Decentralized Applications"
+  author: "Xinyu Ma"
+  month: unknown
+  year: 2024
+  pdfext: https://escholarship.org/uc/item/0j7044w0
+
 # 2021
 
 - title: "Named, Secured Data: A Fundamental Building Block for Secure Networking"
